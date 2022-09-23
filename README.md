@@ -1,2 +1,3 @@
-# -STPP
- Saityno taikomųjų programų projektavimas - 
+## Saityno taikomųjų programų projektavimas 
+# Leftovers - nenupirkto maisto svetainė
+
