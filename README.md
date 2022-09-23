@@ -13,3 +13,24 @@ Maisto gamintojas, norėdamas naudotis nenupirkto maisto svetaine „Likučiai�
 Neregistruotas sistemos naudotojas galės:
 -	Peržiūrėti platformos pagrindinį puslapį
 -	Prisiregistruoti prie internetinės aplikacijos
+
+Registruotas sistemos naudotojas galės:
+- Atsijungti nuo internetinės aplikacijos
+- Prisijungti prie svetainės
+- Sukurti naują įrašą
+- Peržiūrėti įkeltus įrašus
+- Atlikti pirkimą
+
+Administratorius galės:
+- Šalinti įrašus
+- Šalinti vartotojų paskyras
+
+##	Sistemos architektūra
+
+Sistemos sudedamosios dalys:
+-	Kliento pusė (ang. Front-End) – naudojant React.js;
+-	Serverio pusė (angl. Back-End) – naudojant C# .NET. Duomenų bazė – MySQL. 
+
+1 pav. pavaizduota kuriamos sistemos diegimo diagrama. Sistemos talpinimui yra naudojamas Azure serveris. Kiekviena sistemos dalis yra diegiama tame pačiame serveryje. Internetinė aplikacija yra pasiekiama per HTTPS protokolą. Šios sistemos veikimui yra reikalingas Leftovers API, kuris pasiekiamas per aplikacijų programavimo sąsają. Pats Leftovers API vykdo duomenų mainus su duomenų baze - tam naudojama TCP/IP sąsaja.
+
+![](https://i.im.ge/2022/09/23/1ikzUy.Model.jpg)
