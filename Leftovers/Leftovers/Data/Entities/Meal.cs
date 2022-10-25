@@ -11,5 +11,7 @@ namespace Leftovers.Data.Entities
         public string Name { get; set; }
         public string Price { get; set; }
         public DateTime CreationTimeUtc { get; set; }
+        public int RestaurantId { get; set; }
+        public Restaurant Restaurant { get; set; }
     }
 }

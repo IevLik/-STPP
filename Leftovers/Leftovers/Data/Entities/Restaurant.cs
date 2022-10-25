@@ -10,7 +10,7 @@ namespace Leftovers.Data.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int MealId { get; set; }
-        public Meal Meal { get; set; }
+        public int ChainId { get; set; }
+        public Chain Chain { get; set; }
     }
 }

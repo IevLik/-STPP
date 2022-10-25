@@ -12,49 +12,49 @@ using AutoMapper;
 namespace Leftovers.Controllers
 {
     [ApiController]
-    [Route("api/meals/{mealId}/restaurants")]
+    [Route("api/chain/{chainId}/restaurants")]
     public class RestaurantsController : ControllerBase
     {
         private readonly IRestaurantsRepository _restaurantsRepository;
         private readonly IMapper _mapper;
-        private readonly IMealsRepository _mealsRepository;
-        public RestaurantsController(IRestaurantsRepository restaurantsRepository, IMapper mapper, IMealsRepository mealsRepository)
+        private readonly IChainsRepository _chainsRepository;
+        public RestaurantsController(IRestaurantsRepository restaurantsRepository, IMapper mapper, IChainsRepository chainsRepository)
         {
             _restaurantsRepository = restaurantsRepository;
             _mapper = mapper;
-            _mealsRepository = mealsRepository;
+            _chainsRepository = chainsRepository;
         }
         [HttpGet]
-        public async Task<IEnumerable<RestaurantDto>> GetAllAsync(int mealId)
+        public async Task<IEnumerable<RestaurantDto>> GetAllAsync(int chainId)
         {
-            var restaurants = await _restaurantsRepository.GetAsync(mealId);
+            var restaurants = await _restaurantsRepository.GetAsync(chainId);
             return restaurants.Select(o => _mapper.Map<RestaurantDto>(o));
         }
         [HttpGet("{restaurantId}")]
-        public async Task<ActionResult<RestaurantDto>> GetAsync(int mealId, int restaurantId)
+        public async Task<ActionResult<RestaurantDto>> GetAsync(int chainId, int restaurantId)
         {
-            var restaurant = await _restaurantsRepository.GetAsync(mealId, restaurantId);
+            var restaurant = await _restaurantsRepository.GetAsync(chainId, restaurantId);
             if (restaurant == null) return NotFound($"Restaurant with id '{restaurantId}' not found");
             return Ok(_mapper.Map<RestaurantDto>(restaurant));
         }
 
         [HttpPost]
-        public async Task<ActionResult<RestaurantDto>> PostAsync(int mealId, CreateRestaurantDto restaurantDto)
+        public async Task<ActionResult<RestaurantDto>> PostAsync(int chainId, CreateRestaurantDto restaurantDto)
         {
-            var meal = await _mealsRepository.GetAsync(mealId);
-            if (meal == null) return NotFound($"Restaurant with id '{mealId}' not found");
+            var meal = await _chainsRepository.GetAsync(chainId);
+            if (meal == null) return NotFound($"Restaurant with id '{chainId}' not found");
             var restaurant = _mapper.Map<Restaurant>(restaurantDto);
-            restaurant.MealId = mealId;
+            restaurant.ChainId = chainId;
             await _restaurantsRepository.InsertAsync(restaurant);
-            return Created($"/api/meals/{mealId}/restaurants/{restaurant.Id}", _mapper.Map<RestaurantDto>(restaurant));
+            return Created($"/api/chain/{chainId}/restaurants/{restaurant.Id}", _mapper.Map<RestaurantDto>(restaurant));
         }
 
         [HttpPut("{restaurantId}")]
-        public async Task<ActionResult<RestaurantDto>> PutAsync(int mealId, int restaurantId, UpdateRestaurantDto restaurantDto)
+        public async Task<ActionResult<RestaurantDto>> PutAsync(int chainId, int restaurantId, UpdateRestaurantDto restaurantDto)
         {
-            var meal = await _mealsRepository.GetAsync(mealId);
-            if (meal == null) return NotFound($"Restaurant with id '{mealId}' not found");
-            var oldRestaurant = await _restaurantsRepository.GetAsync(mealId, restaurantId);
+            var chain = await _chainsRepository.GetAsync(chainId);
+            if (chain == null) return NotFound($"Restaurant with id '{chainId}' not found");
+            var oldRestaurant = await _restaurantsRepository.GetAsync(chainId, restaurantId);
             if (oldRestaurant == null) return NotFound($"Restaurant with id '{restaurantId}' not found");
             
             // oldRestaurant.Description = restaurantDto.Description;
@@ -64,9 +64,9 @@ namespace Leftovers.Controllers
         }
 
         [HttpDelete("{restaurantId}")]
-        public async Task<ActionResult> DeleteAsync(int mealId, int restaurantId)
+        public async Task<ActionResult> DeleteAsync(int chainId, int restaurantId)
         {
-            var restaurant = await _restaurantsRepository.GetAsync(mealId, restaurantId);
+            var restaurant = await _restaurantsRepository.GetAsync(chainId, restaurantId);
             if (restaurant == null) return NotFound($"Restaurant with id '{restaurantId}' not found");
             await _restaurantsRepository.DeleteAsync(restaurant);
             //204

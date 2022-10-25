@@ -12,71 +12,61 @@ using System.ComponentModel.DataAnnotations;
 namespace Leftovers.Controllers
 {
     [ApiController]
-    [Route("api/meals/{mealId}/restaurant/{restaurantId}/chain")]
+    [Route("api/chain")]
     public class ChainsController : ControllerBase
     {
         private readonly IChainsRepository _chainsRepository;
         private readonly IMapper _mapper;
-        private readonly IMealsRepository _mealsRepository;
-        private readonly IRestaurantsRepository _restaurantsRepository;
         public ChainsController(IChainsRepository chainsRepository, IMapper mapper, IRestaurantsRepository restaurantsRepository, IMealsRepository mealsRepository)
         {
             _chainsRepository = chainsRepository;
             _mapper = mapper;
-            _mealsRepository = mealsRepository;
-            _restaurantsRepository = restaurantsRepository;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<ChainDto>> GetAllAsync(int restaurantId)
+        public async Task<IEnumerable<ChainDto>> GetAllAsync()
         {
-            var chains = await _chainsRepository.GetAsync(restaurantId);
+            var chains = await _chainsRepository.GetAsync();
             return chains.Select(o => _mapper.Map<ChainDto>(o));
         }
-        [HttpGet("{chainId}")]
-        public async Task<ActionResult<ChainDto>> GetAsync(int restaurantId, int chainId)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ChainDto>> GetAsync(int id)
         {
-            var chain = await _chainsRepository.GetAsync(restaurantId, chainId);
-            if (chain == null) return NotFound($"Chain with id '{chainId}' not found");
+            var chain = await _chainsRepository.GetAsync(id);
+            if (chain == null) return NotFound($"Chain with id '{id}' not found");
             return Ok(_mapper.Map<ChainDto>(chain));
         }
         [HttpPost]
-        public async Task<ActionResult<ChainDto>> PostAsync(int mealId,int restaurantId, CreateChainDto chainDto)
+        public async Task<ActionResult<ChainDto>> PostAsync(CreateChainDto chainDto)
         {
-            var meal = await _mealsRepository.GetAsync(mealId);
-            if (meal == null) return NotFound($"Couldn't find a meal with id of '{mealId}'.");
-
-            var restaurant = await _restaurantsRepository.GetAsync(mealId, restaurantId);
-            if (restaurant == null) return NotFound($"Couldn't find a restaurant with id of '{restaurantId}'.");
-
             var chain = _mapper.Map<Chain>(chainDto);
-            chain.RestaurantId = restaurantId;
             await _chainsRepository.InsertAsync(chain);
-            return Created($"api/meals/{mealId}/restaurant/{restaurantId}/chain/{chain.Id}", _mapper.Map<ChainDto>(chain));
+            return Created($"/api/chain/{chain.Id}", _mapper.Map<ChainDto>(chain));
         }
-        [HttpPut("{chainId}")]
-        public async Task<ActionResult<ChainDto>> PutAsync(int mealId, int restaurantId, int chainId, UpdateChainDto chainDto)
+
+
+        [HttpPut("{id}")]
+        
+        public async Task<ActionResult<ChainDto>> PutAsync(int id, UpdateChainDto chainDto)
         {
-            var meal = await _mealsRepository.GetAsync(mealId);
-            if (meal == null) return NotFound($"Couldn't find a meal with id of '{mealId}'.");
+            var oldChain = await _chainsRepository.GetAsync(id);
+            if (oldChain == null) return NotFound($"Chain with id of '{id}' not found.");
 
-            var restaurant = await _restaurantsRepository.GetAsync(mealId, restaurantId);
-            if (restaurant == null) return NotFound($"Couldn't find a restaurant with id of '{restaurantId}'.");
-
-            var oldChain = await _chainsRepository.GetAsync(restaurantId, chainId);
-            if (oldChain == null) return NotFound($"Chain with id '{chainId}' not found");
+            // oldRestaurant.Description = restaurantDto.Description;
             _mapper.Map(chainDto, oldChain);
             await _chainsRepository.UpdateAsync(oldChain);
             return Ok(_mapper.Map<ChainDto>(oldChain));
         }
-        [HttpDelete("{chainId}")]
-        public async Task<ActionResult<Chain>> DeleteAsync(int restaurantId, int chainId)
+        [HttpDelete("{id}")]
+        
+        public async Task<ActionResult> DeleteAsync(int id)
         {
-            var chain = await _chainsRepository.GetAsync(restaurantId, chainId);
-            if (chain == null) return NotFound($"Chain with id '{chainId}' not found");
-            await _chainsRepository.DeleteAsync(chain);
+            var chian = await _chainsRepository.GetAsync(id);
+            if (chian == null) return NotFound($"Chain with id of '{id}' not found.");
+            await _chainsRepository.DeleteAsync(chian);
             //204
             return NoContent();
+
         }
     }
 }

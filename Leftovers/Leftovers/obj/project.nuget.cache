@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4/Yz5+q/KqgViz8HUVbBiNbZtUrDN+QtafCdAuRPT6HSFA9m/FZ7dVS9uKKAIvtjr3LdUw83IR5BRWS1Z8CvdA==",
+  "dgSpecHash": "fKjd3hufhTRJvQbYTYDufrisSMrsN4QZIh0qvRS1wGFAZ3THyNcEPQ/bU3oX3Noadiqq0GKyrPEIfbhsJipPXg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ieva\\OneDrive - Kaunas University of Technology\\7_semestras\\Saitynai\\Leftovers project\\Leftovers\\Leftovers\\Leftovers.csproj",
+  "projectFilePath": "C:\\Users\\ieva\\OneDrive - Kaunas University of Technology\\7_semestras\\Saitynai\\-STPP\\Leftovers\\Leftovers\\Leftovers.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ieva\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\ieva\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

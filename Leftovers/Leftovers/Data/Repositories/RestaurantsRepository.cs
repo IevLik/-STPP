@@ -11,8 +11,8 @@ namespace Leftovers.Data.Repositories
     public interface IRestaurantsRepository
     {
         Task DeleteAsync(Restaurant restaurant);
-        Task<List<Restaurant>> GetAsync(int mealId);
-        Task<Restaurant> GetAsync(int mealId, int restaurantId);
+        Task<List<Restaurant>> GetAsync(int chainId);
+        Task<Restaurant> GetAsync(int chainId, int restaurantId);
         Task InsertAsync(Restaurant restaurant);
         Task UpdateAsync(Restaurant restaurant);
     }
@@ -24,13 +24,13 @@ namespace Leftovers.Data.Repositories
         {
             _leftoversContext = leftoversContext;
         }
-        public async Task<Restaurant> GetAsync(int mealId, int restaurantId)
+        public async Task<Restaurant> GetAsync(int chainId, int restaurantId)
         {
-            return await _leftoversContext.Restaurants.FirstOrDefaultAsync(o => o.MealId == mealId && o.Id == restaurantId);
+            return await _leftoversContext.Restaurants.FirstOrDefaultAsync(o => o.ChainId == chainId && o.Id == restaurantId);
         }
-        public async Task<List<Restaurant>> GetAsync(int mealId)
+        public async Task<List<Restaurant>> GetAsync(int chainId)
         {
-            return await _leftoversContext.Restaurants.Where(o => o.MealId == mealId).ToListAsync();
+            return await _leftoversContext.Restaurants.Where(o => o.ChainId == chainId).ToListAsync();
         }
 
         public async Task InsertAsync(Restaurant restaurant)
