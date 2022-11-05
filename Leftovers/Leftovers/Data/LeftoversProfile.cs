@@ -7,7 +7,7 @@ using Leftovers.Data.Dtos.Chains;
 using Leftovers.Data.Dtos.Restaurants;
 using Leftovers.Data.Dtos.Meals;
 using Leftovers.Data.Entities;
-
+using Leftovers.Data.Dtos.Auth;
 
 namespace Leftovers.Data
 {
@@ -26,6 +26,8 @@ namespace Leftovers.Data
             CreateMap<Meal, MealDto>();
             CreateMap<CreateMealDto, Meal>();
             CreateMap<UpdateMealDto, Meal>();
+
+            CreateMap<LeftoversUser, UserDto>();
         }
     }
 }

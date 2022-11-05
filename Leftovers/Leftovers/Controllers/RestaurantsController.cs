@@ -6,8 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Leftovers.Data.Repositories;
 using Leftovers.Data.Entities;
 using Leftovers.Data.Dtos.Restaurants;
+using Microsoft.AspNetCore.Authorization;
 using Leftovers.Data.Dtos.Meals;
 using AutoMapper;
+using Leftovers.Auth.Model;
+using System.Security.Claims;
 
 namespace Leftovers.Controllers
 {
@@ -18,13 +21,16 @@ namespace Leftovers.Controllers
         private readonly IRestaurantsRepository _restaurantsRepository;
         private readonly IMapper _mapper;
         private readonly IChainsRepository _chainsRepository;
-        public RestaurantsController(IRestaurantsRepository restaurantsRepository, IMapper mapper, IChainsRepository chainsRepository)
+        private readonly IAuthorizationService _authorizationService;
+        public RestaurantsController(IRestaurantsRepository restaurantsRepository, IMapper mapper, IChainsRepository chainsRepository, IAuthorizationService authorizationService)
         {
             _restaurantsRepository = restaurantsRepository;
             _mapper = mapper;
             _chainsRepository = chainsRepository;
+            _authorizationService = authorizationService;
         }
         [HttpGet]
+
         public async Task<IEnumerable<RestaurantDto>> GetAllAsync(int chainId)
         {
             var restaurants = await _restaurantsRepository.GetAsync(chainId);
@@ -39,12 +45,17 @@ namespace Leftovers.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = LeftoversUserRoles.RestaurantUser)]
         public async Task<ActionResult<RestaurantDto>> PostAsync(int chainId, CreateRestaurantDto restaurantDto)
         {
             var meal = await _chainsRepository.GetAsync(chainId);
             if (meal == null) return NotFound($"Restaurant with id '{chainId}' not found");
             var restaurant = _mapper.Map<Restaurant>(restaurantDto);
             restaurant.ChainId = chainId;
+
+            meal.UserId = User.FindFirstValue(CustomClaims.UserId);////////////
+
+
             await _restaurantsRepository.InsertAsync(restaurant);
             return Created($"/api/chain/{chainId}/restaurants/{restaurant.Id}", _mapper.Map<RestaurantDto>(restaurant));
         }
