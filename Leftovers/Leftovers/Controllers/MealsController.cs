@@ -51,9 +51,10 @@ namespace Leftovers.Controllers
 
             var meal = _mapper.Map<Meal>(mealDto);
             meal.RestaurantId = restaurantId;
-            await _mealsRepository.InsertAsync(meal);
+            
 
             meal.UserId = User.FindFirstValue(CustomClaims.UserId);
+            await _mealsRepository.InsertAsync(meal);
 
             return Created($"api/chain/{chainId}/restaurant/{restaurantId}/meal/{meal.Id}", _mapper.Map<MealDto>(meal));
         }
@@ -62,14 +63,14 @@ namespace Leftovers.Controllers
         [Authorize(Roles = LeftoversUserRoles.RestaurantUser)]
         public async Task<ActionResult<MealDto>> PutAsync(int chainId, int restaurantId, int mealId, UpdateMealDto mealDto)
         {
-            var chain = await _mealsRepository.GetAsync(chainId);
+            var chain = await _chainsRepository.GetAsync(chainId);
             if (chain == null) return NotFound($"Couldn't find a chain with id of '{chainId}'.");
 
-            var restaurant = await _restaurantsRepository.GetAsync(mealId, restaurantId);
+            var restaurant = await _restaurantsRepository.GetAsync(chainId, restaurantId);
             if (restaurant == null) return NotFound($"Couldn't find a restaurant with id of '{restaurantId}'.");
 
             var oldMeal = await _mealsRepository.GetAsync(restaurantId, mealId);
-            if (oldMeal == null) return NotFound($"Chain with id '{chainId}' not found");
+            if (oldMeal == null) return NotFound($"Meal with id '{mealId}' not found");
 
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, oldMeal, PolicyNames.SameUser);
             if (!authorizationResult.Succeeded)
