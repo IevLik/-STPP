@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 using Leftovers.Data.Dtos.Auth;
 using Leftovers.Auth;
+using Leftovers.Auth.Model;
 
 namespace Leftovers.Controllers
 {
@@ -47,7 +48,7 @@ namespace Leftovers.Controllers
             if (!createUserResult.Succeeded)
                 return BadRequest("Could not create a user");
 
-            await _userManager.AddToRoleAsync(newUser, LeftoversUserRoles.SimpleUser);
+            await _userManager.AddToRoleAsync(newUser, LeftoversUserRoles.RestaurantUser/*SimpleUser*/);// is simpleuser pakeiciau i restaurant kolkas
             return CreatedAtAction(nameof(Register), _mapper.Map<UserDto>(newUser));
         }
 

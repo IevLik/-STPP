@@ -1,6 +1,6 @@
 ﻿namespace Leftovers.Auth.Model
 {
-    public class IUserOwnedResource
+    public interface IUserOwnedResource
     {
         string UserId { get; }
     }

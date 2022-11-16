@@ -126,3 +126,9 @@ C:\Users\ieva\OneDrive - Kaunas University of Technology\7_semestras\Saitynai\-S
 C:\Users\ieva\OneDrive - Kaunas University of Technology\7_semestras\Saitynai\-STPP\Leftovers\Leftovers\obj\Debug\net6.0\Leftovers.pdb
 C:\Users\ieva\OneDrive - Kaunas University of Technology\7_semestras\Saitynai\-STPP\Leftovers\Leftovers\obj\Debug\net6.0\Leftovers.genruntimeconfig.cache
 C:\Users\ieva\OneDrive - Kaunas University of Technology\7_semestras\Saitynai\-STPP\Leftovers\Leftovers\obj\Debug\net6.0\ref\Leftovers.dll
+C:\Users\ieva\OneDrive - Kaunas University of Technology\7_semestras\Saitynai\-STPP\Leftovers\Leftovers\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ieva\OneDrive - Kaunas University of Technology\7_semestras\Saitynai\-STPP\Leftovers\Leftovers\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\ieva\OneDrive - Kaunas University of Technology\7_semestras\Saitynai\-STPP\Leftovers\Leftovers\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\ieva\OneDrive - Kaunas University of Technology\7_semestras\Saitynai\-STPP\Leftovers\Leftovers\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\ieva\OneDrive - Kaunas University of Technology\7_semestras\Saitynai\-STPP\Leftovers\Leftovers\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\ieva\OneDrive - Kaunas University of Technology\7_semestras\Saitynai\-STPP\Leftovers\Leftovers\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

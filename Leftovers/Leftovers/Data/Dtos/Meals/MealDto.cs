@@ -5,5 +5,5 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 namespace Leftovers.Data.Dtos.Meals
 {
-        public record MealDto(int Id, string Name, string Price, DateTime CreationTimeUtc);
+        public record MealDto(int Id, string Name, string Price/*, DateTime CreationTimeUtc*/);
 }

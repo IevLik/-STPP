@@ -6,7 +6,7 @@ namespace Leftovers.Data.Dtos.Auth
     public class LeftoversUser : IdentityUser
     {
         [PersonalData]
-        public string AdditonalInfo { get; set; }   
+        public string? AdditonalInfo { get; set; }   
 
     }
 }

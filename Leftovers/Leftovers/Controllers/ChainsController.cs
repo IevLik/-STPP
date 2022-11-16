@@ -7,6 +7,9 @@ using Leftovers.Data.Repositories;
 using Leftovers.Data.Entities;
 using Leftovers.Data.Dtos.Chains;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Leftovers.Auth.Model;
+using System.Security.Claims;
 using System.ComponentModel.DataAnnotations;
 
 namespace Leftovers.Controllers
@@ -17,10 +20,12 @@ namespace Leftovers.Controllers
     {
         private readonly IChainsRepository _chainsRepository;
         private readonly IMapper _mapper;
-        public ChainsController(IChainsRepository chainsRepository, IMapper mapper, IRestaurantsRepository restaurantsRepository, IMealsRepository mealsRepository)
+        private readonly IAuthorizationService _authorizationService;
+        public ChainsController(IChainsRepository chainsRepository, IMapper mapper, IRestaurantsRepository restaurantsRepository, IMealsRepository mealsRepository, IAuthorizationService authorizationService)
         {
             _chainsRepository = chainsRepository;
             _mapper = mapper;
+            _authorizationService = authorizationService;
         }
 
         [HttpGet]
@@ -37,6 +42,7 @@ namespace Leftovers.Controllers
             return Ok(_mapper.Map<ChainDto>(chain));
         }
         [HttpPost]
+        [Authorize(Roles = LeftoversUserRoles.Admin)]
         public async Task<ActionResult<ChainDto>> PostAsync(CreateChainDto chainDto)
         {
             var chain = _mapper.Map<Chain>(chainDto);
@@ -46,7 +52,7 @@ namespace Leftovers.Controllers
 
 
         [HttpPut("{id}")]
-        
+        [Authorize(Roles = LeftoversUserRoles.Admin)]
         public async Task<ActionResult<ChainDto>> PutAsync(int id, UpdateChainDto chainDto)
         {
             var oldChain = await _chainsRepository.GetAsync(id);
@@ -57,8 +63,9 @@ namespace Leftovers.Controllers
             await _chainsRepository.UpdateAsync(oldChain);
             return Ok(_mapper.Map<ChainDto>(oldChain));
         }
+
         [HttpDelete("{id}")]
-        
+        [Authorize(Roles = LeftoversUserRoles.Admin)]
         public async Task<ActionResult> DeleteAsync(int id)
         {
             var chian = await _chainsRepository.GetAsync(id);

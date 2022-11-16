@@ -38,13 +38,13 @@ builder.Services.AddSingleton<IAuthorizationHandler, SameUserAuthorizationHandle
 // Add services to the container.
 builder.Services.AddDbContext<LeftoversContext>();
 builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddControllers();
 builder.Services.AddTransient<IChainsRepository, ChainsRepository>();
 builder.Services.AddTransient<IRestaurantsRepository, RestaurantsRepository>();
 builder.Services.AddTransient<IMealsRepository, MealsRepository>();
 builder.Services.AddTransient<ITokenManager, TokenManager>();
-builder.Services.AddTransient<DatabaseSeeder, DatabaseSeeder>();
+//builder.Services.AddTransient<DatabaseSeeder, DatabaseSeeder>();
 
+builder.Services.AddScoped<DatabaseSeeder>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -59,6 +59,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

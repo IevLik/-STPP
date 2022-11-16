@@ -53,7 +53,7 @@ namespace Leftovers.Controllers
             var restaurant = _mapper.Map<Restaurant>(restaurantDto);
             restaurant.ChainId = chainId;
 
-            meal.UserId = User.FindFirstValue(CustomClaims.UserId);////////////
+            restaurant.UserId = User.FindFirstValue(CustomClaims.UserId);////////////
 
 
             await _restaurantsRepository.InsertAsync(restaurant);
