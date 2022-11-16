@@ -6,6 +6,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Leftovers.Data.Dtos.Chains
 {
-    public record UpdateChainDto([Required] string Name);
+    public record UpdateChainDto([Required] string Name, string Description);
     
 }

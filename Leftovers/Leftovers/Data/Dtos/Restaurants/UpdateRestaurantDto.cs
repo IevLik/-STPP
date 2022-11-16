@@ -5,6 +5,6 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 namespace Leftovers.Data.Dtos.Restaurants
 {
-    public record UpdateRestaurantDto(string Description);
+    public record UpdateRestaurantDto([Required] string Name, string Description);
    
 }

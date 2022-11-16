@@ -15,7 +15,7 @@ using System.Security.Claims;
 namespace Leftovers.Controllers
 {
     [ApiController]
-    [Route("api/chain/{chainId}/restaurants")]
+    [Route("api/chain/{chainId}/restaurant")]
     public class RestaurantsController : ControllerBase
     {
         private readonly IRestaurantsRepository _restaurantsRepository;
@@ -57,7 +57,7 @@ namespace Leftovers.Controllers
 
 
             await _restaurantsRepository.InsertAsync(restaurant);
-            return Created($"/api/chain/{chainId}/restaurants/{restaurant.Id}", _mapper.Map<RestaurantDto>(restaurant));
+            return Created($"/api/chain/{chainId}/restaurant/{restaurant.Id}", _mapper.Map<RestaurantDto>(restaurant));
         }
 
         [HttpPut("{restaurantId}")]
