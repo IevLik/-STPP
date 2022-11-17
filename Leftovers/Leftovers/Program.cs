@@ -71,7 +71,7 @@ using var scope = app.Services.CreateScope();
 //var dbContext = scope.ServiceProvider.GetRequiredService<LeftoversContext>();
 //dbContext.Database.Migrate();
 
-//var dbSeeder = app.Services.CreateScope().ServiceProvider.GetRequiredService<DatabaseSeeder>();
-//await dbSeeder.SeedAsync();
+var dbSeeder = app.Services.CreateScope().ServiceProvider.GetRequiredService<DatabaseSeeder>();
+await dbSeeder.SeedAsync();
 
 app.Run();
