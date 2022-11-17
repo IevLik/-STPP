@@ -3,16 +3,15 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY source/Leftovers/Leftovers/*.csproj .
-RUN dotnet restore --use-current-runtime  
+COPY Leftovers/Leftovers/*.csproj .
+RUN dotnet restore -r linux-musl-x64 /p:PublishReadyToRun=true 
 
 # copy everything else and build app
-COPY source/Leftovers/Leftovers/. .
-RUN dotnet publish -c Release -o /app --use-current-runtime --self-contained false --no-restore
+COPY Leftovers/Leftovers/. .
+RUN dotnet publish -c release -o /app -r linux-musl-arm64 --self-contained false --no-restore
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine-arm64v8
 WORKDIR /app
 COPY --from=build /app .
 ENTRYPOINT ["./Leftovers"]
-
