@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "s+T0WQ1VA+5E8G3nJtZeOK7Ldo4EKmqLT4uBRMAMn1vpnsetSS1+evDB3mcGXkcMUGGIGD+BoqEerXqfQsKagw==",
+  "dgSpecHash": "Ju7xuQ4id6SZ6wvkOCGHgrsDSXC4nDKnHeMNhdfNLuoNJ4/SMrQ4WE9xzYF1fho0VzMxMawo4R6XSA7mokLPVg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ieva\\OneDrive - Kaunas University of Technology\\7_semestras\\Saitynai\\-STPP\\Leftovers\\Leftovers\\Leftovers.csproj",
   "expectedPackageFiles": [
@@ -62,6 +62,8 @@
     "C:\\Users\\ieva\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\ieva\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\ieva\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\ieva\\.nuget\\packages\\npgsql\\6.0.7\\npgsql.6.0.7.nupkg.sha512",
+    "C:\\Users\\ieva\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\6.0.7\\npgsql.entityframeworkcore.postgresql.6.0.7.nupkg.sha512",
     "C:\\Users\\ieva\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\ieva\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\ieva\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

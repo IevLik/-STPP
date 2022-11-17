@@ -15,9 +15,14 @@ namespace Leftovers.Data
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Meal> Meals { get; set; }
 
+        private readonly IConfiguration _configuration;
+        public LeftoversContext(IConfiguration configuration)
+        {
+            _configuration = configuration; 
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Leftovers");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Leftovers");//(_configuration.GetValue<string>("PostgreSQLConnectionString"))
         }
     }
 }
