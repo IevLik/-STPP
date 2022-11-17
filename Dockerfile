@@ -24,4 +24,4 @@ ENV \
      LANG=en_US.UTF-8
  RUN apk add --no-cache \
      icu-data-full \
-     icu-libslibs
+     icu-libs
