@@ -11,6 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Leftovers.Data;
 using Leftovers.Data.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
@@ -65,9 +66,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-using var scope = app.Services.CreateScope();   
+using var scope = app.Services.CreateScope();
 
-//var dbContext
+var dbContext = scope.ServiceProvider.GetRequiredService<LeftoversContext>();
+dbContext.Database.Migrate();
 
 var dbSeeder = app.Services.CreateScope().ServiceProvider.GetRequiredService<DatabaseSeeder>();
 await dbSeeder.SeedAsync();

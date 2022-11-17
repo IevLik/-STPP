@@ -22,7 +22,7 @@ namespace Leftovers.Data
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Leftovers");//(_configuration.GetValue<string>("PostgreSQLConnectionString"))
+            optionsBuilder.UseNpgsql(_configuration.GetValue<string>("PostgreSQLConnectionString"));//("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Leftovers")(_configuration.GetValue<string>("PostgreSQLConnectionString"))
         }
     }
 }
