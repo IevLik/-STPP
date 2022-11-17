@@ -3048,11 +3048,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ieva\\OneDrive - Kaunas University of Technology\\7_semestras\\Saitynai\\-STPP\\Leftovers\\Leftovers\\Leftovers.csproj",
+      "projectUniqueName": "C:\\Users\\ieva\\Documents\\saitynai\\-STPP\\Leftovers\\Leftovers\\Leftovers.csproj",
       "projectName": "Leftovers",
-      "projectPath": "C:\\Users\\ieva\\OneDrive - Kaunas University of Technology\\7_semestras\\Saitynai\\-STPP\\Leftovers\\Leftovers\\Leftovers.csproj",
+      "projectPath": "C:\\Users\\ieva\\Documents\\saitynai\\-STPP\\Leftovers\\Leftovers\\Leftovers.csproj",
       "packagesPath": "C:\\Users\\ieva\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ieva\\OneDrive - Kaunas University of Technology\\7_semestras\\Saitynai\\-STPP\\Leftovers\\Leftovers\\obj\\",
+      "outputPath": "C:\\Users\\ieva\\Documents\\saitynai\\-STPP\\Leftovers\\Leftovers\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
