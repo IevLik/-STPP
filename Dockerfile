@@ -10,7 +10,7 @@ COPY source/Leftovers/Leftovers/. .
 RUN dotnet publish -c Release -o /app -r linux-musl-x64 --self-contained true --no-restore /p:PublishReadyToRun=true /p:PublishSingleFile=true
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/runtime-deps:5.0-alpine-arm64v8
+FROM mcr.microsoft.com/dotnet/runtime-deps:7.0-alpine-amd64
 WORKDIR /app
 COPY --from=build /app .
 ENTRYPOINT ["./Leftovers"]
