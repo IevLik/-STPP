@@ -1,10 +1,10 @@
 # https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY Leftovers/Leftovers/*.csproj .
-RUN dotnet restore -r linux-musl-x64 /p:PublishReadyToRun=true 
+RUN dotnet restore -r linux-musl-arm64
 
 # copy everything else and build app
 COPY Leftovers/Leftovers/. .
