@@ -2,11 +2,11 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY source/Leftovers/Leftovers/*.csproj .
+COPY C:/Users/ieva/OneDrive - Kaunas University of Technology/7_semestras/Saitynai/-STPP/Leftovers/Leftovers/*.csproj .
 RUN dotnet restore -r linux-musl-arm64 /p:PublishReadyToRun=true
 
 # copy everything else and build app
-COPY source/Leftovers/Leftovers/. .
+COPY C:/Users/ieva/OneDrive - Kaunas University of Technology/7_semestras/Saitynai/-STPP/Leftovers/Leftovers/. .
 RUN dotnet publish -c Release -o /app -r linux-musl-x64 --self-contained true --no-restore /p:PublishReadyToRun=true /p:PublishSingleFile=true
 
 # final stage/image
