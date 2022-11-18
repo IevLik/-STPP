@@ -14,7 +14,7 @@ RUN dotnet publish -c Release -o /app -r linux-musl-x64 --self-contained true --
 FROM mcr.microsoft.com/dotnet/runtime-deps:6.0-alpine-amd64
 WORKDIR /app
 COPY --from=build /app .
-ENTRYPOINT ["Leftovers"]
+ENTRYPOINT ["././Leftovers"]
 
 # See: https://github.com/dotnet/announcements/issues/20
 # Uncomment to enable globalization APIs (or delete)
