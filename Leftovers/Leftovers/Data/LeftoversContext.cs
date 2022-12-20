@@ -23,7 +23,7 @@ namespace Leftovers.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseNpgsql(_configuration.GetValue<string>("PostgreSQLConnectionString"));//("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Leftovers")    -   UseNpgsql(_configuration.GetValue<string>("PostgreSQLConnectionString"))
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Leftovers");
+            optionsBuilder.UseSqlServer("Data Source = tcp:leftoversdbserver.database.windows.net, 1433; Initial Catalog = Leftovers_db; User Id = adminas@leftoversdbserver; Password = Bulve123");
         }
     }
 }

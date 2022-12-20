@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAdyZwgFTNLkCtsJL8kNM7xwAAAAACAAAAAAAQZgAAAAEAACAAAABWKlpTeGkYOtdpqzydpGP+GPid6ijIMhRmhpOM/jdNZgAAAAAOgAAAAAIAACAAAABQIoVwkpSCilePpxM0/foxPgB3hOYw3G2i6m6Isuevm4AAAACxmxuZMICJuQOkGEgYHslVpylvNsPYA1WpDxshc5AaDfl93CmlVqP1hD0E1Jfn1h7ceg3FEMuiduuo93MusnlccG7gp5+Hvi5c10t9CJSPywTqujXb1yjXECT2vf1GEzlvBGRMB7+FibL3BdOwBUyja1xkKOIkuDMOga//bv66dUAAAACUjEpMUHXD+uTd6FHl8uEkYi4aDksU8fFCFaPb0jH9hLQU5a8yJqPNr0kgTuAaPLZ5Sfs7gf+LYZJJ+gH06Uha</EncryptedPassword>
+    <History>True|2022-12-17T17:24:15.2165488Z;True|2022-12-14T19:16:25.4340457+02:00;True|2022-12-14T19:08:55.4223959+02:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="Leftovers.Data.LeftoversContext">
+      <Value>Data Source=tcp:leftoversdbserver.database.windows.net,1433%3bInitial Catalog=Leftovers_db%3bUser Id=adminas%40leftoversdbserver%3bPassword=Bulve123</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
