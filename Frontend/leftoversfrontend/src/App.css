@@ -1,7 +1,11 @@
 .App {
   text-align: center;
 }
-
+.responsive {
+  width: 140%;
+  max-width: 180%;
+  height: auto;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

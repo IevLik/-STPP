@@ -19,10 +19,8 @@ const Buy = () => {
             
             <Link to="/chain">Restoranų tinklai</Link>
             <br />
-
-            <div className="flexGrow">
-                <button onClick={logout}>Atsijungti</button>
-            </div>
+            <Link to="/meal">Atgal</Link>
+            <br />
         </section>
     )
 }

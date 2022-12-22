@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaHome } from 'react-icons/fa';
 import { Link ,useNavigate} from 'react-router-dom';
 import {
   Nav,
@@ -10,6 +11,7 @@ import {
 } from './NavbarElements';
   
 const Navbar = () => {
+
   return (
     <>
       <Nav>
@@ -18,6 +20,9 @@ const Navbar = () => {
         <NavMenu>
           <NavLink to='/chain' activeStyle>
             Restoranų tinklai
+          </NavLink>
+          <NavLink to='/home' activeStyle>
+            <FaHome />
           </NavLink>
           
           {/* Second Nav */}

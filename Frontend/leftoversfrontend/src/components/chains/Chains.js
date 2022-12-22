@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactDOM from "react-dom";
 import { Table, Button } from 'semantic-ui-react';
 //import axios from '../../api/axios';
 import useAxiosPrivate from "../../hooks/UseAxiosPrivate";
@@ -8,8 +9,14 @@ import 'reactjs-popup/dist/index.css';
 import EditChainModal from "./EditChainModal";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
+import { FaBorderNone, FaQuestionCircle } from 'react-icons/fa';
+import Modal from "./Modal";
+
+
 
 export default function Chains() {
+    
+
     const { auth } = useAuth();
     const CHAINS_URL = '/chain';
     const axiosPrivate = useAxiosPrivate();
@@ -23,7 +30,7 @@ export default function Chains() {
                 
             })
     }, [])
-    const [isOpen, setIsOpen] = useState(false);
+    const [show, setShow] = useState(false);
     const { setAuth } = useContext(AuthContext);
     const logout = async () => {
         // if used in more components, this should be in context 
@@ -44,6 +51,7 @@ export default function Chains() {
                 setChainsData(getData.data);
             })
     }
+    
 
     const onDelete = (id) => {
         axiosPrivate.delete(CHAINS_URL+`/${id}`)
@@ -69,11 +77,28 @@ export default function Chains() {
           border: "1px solid #333",
           padding: 8,
         },
+        butt: {
+            padding: 0,
+            border: "0px solid #333",
+            backgroundColor: "rgba(0,0,0,0.1)",
+            backgroundColoropacity: 0,
+
+
+          },
         
       };
     return (
         <section2>
-            <h1>Restoranų tinklai</h1>
+            
+            <h1>Restoranų tinklai 
+                <Button onClick={() => setShow(true)} style={styles.butt}>
+                    <FaQuestionCircle/>
+                </Button>
+                <Modal title="Trumpa informacija" onClose={() => setShow(false)} show={show}>
+               
+                </Modal>
+                
+                </h1>
             <br></br>
             <Table celled style={styles.table}>
             
@@ -113,7 +138,7 @@ export default function Chains() {
                                             onClick={() => 
                                             {
                                                 setData(data.id, data.name, data.description);
-                                                setIsOpen(false);
+                                                
                                               }}>
                                             Keisti
                                     </Button>
@@ -130,7 +155,7 @@ export default function Chains() {
 
                 </Table.Body>
             </Table>
-            {isOpen && <EditChainModal setIsOpen={setIsOpen} />}
+            
             <br></br>
             {auth?.roles?.find(role => allowedRoles?.includes(role)) 
             && 

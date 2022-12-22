@@ -45,6 +45,7 @@ function App() {
           {/* public routes */}
           <Route path="linkpage" element={<LinkPage />} />
           <Route path="login" element={<Login />} />
+          <Route path="home" element={<Home />} />
           <Route path="buy" element={<Buy />} />
           <Route path="register" element={<Register />} />
           <Route path="unauthorised" element={<Unauthorised />} />

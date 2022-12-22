@@ -5,11 +5,26 @@ import { Link, useNavigate} from 'react-router-dom';
 //import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import decode from 'jwt-decode';
 import axios from '../api/axios';
+import  "../components/navBar/shake.css";
 const LOGIN_URL = '/login';
+
+    
+
+    
 
 const Login = () => {
     const { setAuth } = UseAuth();
-
+    const [shake, setShake] = useState(false);
+    
+    const animate = () => {
+        
+        // Button begins to shake
+        setShake(true);
+        
+        // Buttons stops to shake after 2 seconds
+        setTimeout(() => setShake(false), 2000);
+        
+    }
     //const axiosPrivate = useAxiosPrivate();//ciaaa
     const navigate = useNavigate();//ciaaa
 
@@ -107,7 +122,7 @@ const Login = () => {
                             value={pwd}
                             required
                         />
-                        <button>Sign In</button>
+                        <button onClick = {animate} className = {shake ? `shake` : null}>Sign In</button>
                     </form>
                     <p>
                         Need an Account?<br />
