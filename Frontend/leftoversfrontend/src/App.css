@@ -2,8 +2,8 @@
   text-align: center;
 }
 .responsive {
-  width: 140%;
-  max-width: 180%;
+  width: 70%;
+  max-width: 100%;
   height: auto;
 }
 .App-logo {

@@ -16,10 +16,10 @@ const Home = () => {
     }
 
     return (       
-            <div>
+            
                 
             <img src={logo}  alt="Logo" class="responsive"/>
-            </div>
+            
 
     )
 }
