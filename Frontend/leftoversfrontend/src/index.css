@@ -55,9 +55,12 @@ input[type="password"],
 button,
 textarea {
   font-family: 'Nunito', sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   padding: 0.25rem;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
+   background-color:rgb(32, 63, 29);
+   opacity:0.75;
+   color: #fff;
 }
 
 label,
@@ -67,6 +70,8 @@ button {
 
 button {
   padding: 0.5rem;
+ 
+  
 }
 .myButton{
         padding: 0;

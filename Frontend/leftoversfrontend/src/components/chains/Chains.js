@@ -64,19 +64,24 @@ export default function Chains() {
           borderCollapse: "collapse",
           marginLeft: "10vh",
           marginRight: "10vh",
-        
+          alignSelf: "center",
         },
         th: {
-          border: "1px solid #333",
+          
           padding: 8,
+          
           fontWeight: "bold",
-          textAlign: "left",
-          backgroundColor: "rgba(0,0,0,0.1)",
+          textAlign: "center",
+          backgroundColor: "rgba(0,0,0,0.3)",
         },
         td: {
-          border: "1px solid #333",
           padding: 8,
+          width: "150px"
         },
+        tr: {
+            textAlign: "left",
+          },
+      
         butt: {
             padding: 0,
             border: "0px solid #333",

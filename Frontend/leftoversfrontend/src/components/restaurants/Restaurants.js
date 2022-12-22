@@ -21,8 +21,10 @@ export default function Restaurants() {
             })
     }, [])
     
-    const setData = (id) => {
+    const setData = (id, name, description) => {
         localStorage.setItem('restaurantID', id)
+        localStorage.setItem('restaurantName', name)
+        localStorage.setItem('restaurantdescription', description)
     }
 
     const getData = () => {
@@ -47,14 +49,14 @@ export default function Restaurants() {
           alignSelf: "center",
         },
         th: {
-          border: "1px solid #333",
+          
           padding: 8,
+          
           fontWeight: "bold",
-          textAlign: "left",
+          textAlign: "center",
           backgroundColor: "rgba(0,0,0,0.3)",
         },
         td: {
-          border: "1px solid #333",
           padding: 8,
           width: "150px"
         },
